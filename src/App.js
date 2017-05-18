@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Browser from './Browser.js'
+import Browser from './Browser'
 
 class App extends Component {
   render() {

@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+nw.Window.open('public/index.html', {}, function(win) {
+  win.on('loaded', function() {
+    debugger;
+    ReactDOM.render(
+      <App />,
+      win.window.document.getElementById('root')
+    );
+  })
+});
