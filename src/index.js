@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import '../public/index.html'
 
-nw.Window.open('public/index.html', {}, function(win) {
-  win.on('loaded', function() {
-    debugger;
-    ReactDOM.render(
-      <App />,
-      win.window.document.getElementById('root')
-    );
-  })
-});
+nw.Window.get().showDevTools()
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
