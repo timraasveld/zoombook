@@ -10,7 +10,7 @@
     "react-dom": "^15.5.4"
   },
   "scripts": {
-    "open": "node scripts/open.js"
+    "open": "webpack && nwjs ."
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
