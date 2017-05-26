@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
 import './Browser.css'
+import CSS3D from './CSS3D'
+import * as THREE from 'three'
 
 class Browser extends Component {
   constructor(props) {
     super(props)
-    this.state = {url: props.homePage}
   }
 
   navigateTo(newUrl) {
-    this.setState(prevState => ({
-      url: newUrl
-    }))
+    console.log("TODO: propagate up navigateTo")
   }
 
   render() {
+    const { url, position } = this.props
+
     return(
-      <div className="browser">
-        <UrlBar url={this.state.url} onChange={(url) => this.navigateTo(url)} />
-        <PermissiveIframe url={this.state.url} />
-      </div>
+      <CSS3D position={position}>
+        <div className="browser">
+          <UrlBar url={url} onChange={(url) => this.navigateTo(url)} />
+          <PermissiveIframe url={url} />
+        </div>
+      </CSS3D>
     )
   }
 }

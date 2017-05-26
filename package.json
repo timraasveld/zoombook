@@ -15,7 +15,8 @@
     "react-dom": "^15.5.4",
     "react-three-renderer": "^3.1.0",
     "three": "^0.84.0",
-    "three-map-controls": "timraasveld/three-map-controls"
+    "three-map-controls": "timraasveld/three-map-controls",
+    "uuid": "^3.0.1"
   },
   "scripts": {
     "open": "(webpack -d && webpack -d --bail > /dev/null 2>&1) && nwjs ."

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import React3 from 'react-three-renderer'
 import * as THREE from 'three'
 import Browser from './Browser'
-import CSS3D from './CSS3D'
 import MapControls from 'three-map-controls'
+import uuid from 'uuid/v4'
 
 const fov = 75
 
@@ -20,7 +20,14 @@ class Viewport extends Component {
     this.state = {
       width: window.innerWidth,
       height: window.innerHeight,
-      cameraPosition: new THREE.Vector3(0, 0, maxDistance)
+      cameraPosition: new THREE.Vector3(0, 0, maxDistance),
+      browsers: [
+        { url: 'http://nu.nl', position: new THREE.Vector3(0, 0, 0) },
+        { url: 'https://tweakers.net', position: new THREE.Vector3(500, 500, 0) }
+      ].map(function(browser) {
+        browser.uuid = uuid()
+        return browser
+      })
     }
 
     // Render CSS output outside ReactDOM context
@@ -87,23 +94,19 @@ class Viewport extends Component {
           far={maxDistance}
           position={cameraPosition}
         />
-        <CSS3D position={new THREE.Vector3()}>
-          <Browser homePage="http://nu.nl" />
-        </CSS3D>
+        {this.renderBrowsers()}
       </scene>
       </React3>
     )
   }
+
+  renderBrowsers() {
+    return this.state.browsers.map(function(browser) {
+      return (
+        <Browser key={browser.uuid} {...browser} />
+      )
+    })
+  }
 }
-/*
-        <orthographicCamera name="camera"
-                            ref="camera"
-                            left={0}
-                            right={1000}
-                            top={0}
-                            bottom={-2}
-                            near={-1000}
-                            far={1000}
-                            position={cameraPosition} />
-*/
+
 export default Viewport
