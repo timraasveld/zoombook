@@ -1,5 +1,6 @@
-.browser {
-    height: 100vh;
+.browser, .css-renderer > div > div {
+  width: 100%;
+  height: 100%;
 }
 
 .url-bar {

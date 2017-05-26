@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Browser.css'
 
 class Browser extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Browser extends Component {
     return(
       <div className="browser">
         <UrlBar url={this.state.url} onChange={(url) => this.navigateTo(url)} />
-        <Viewport url={this.state.url} />
+        <PermissiveIframe url={this.state.url} />
       </div>
     )
   }
@@ -51,7 +52,7 @@ class UrlBar extends Component {
   }
 }
 
-class Viewport extends Component {
+class PermissiveIframe extends Component {
   render() {
     // attributes:
     // - is: React prop to disable custom attribute whitelisting (needed to render nwdisable and nwfaketop)
